@@ -1,0 +1,274 @@
+header {
+    background-color: brown;
+    padding: 1rem 1rem 1rem 2rem;
+  }
+  
+  header a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    padding-right: 3rem;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  .home-post {
+    width: 95%;
+    margin: 1rem auto;
+    border-radius: 5px;
+    border: 3px solid brown;
+  }
+  
+  .home-post:hover {
+    cursor: pointer;
+  }
+  
+  .home-post-header {
+    background-color: brown;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    color: lightgray;
+  }
+  
+  .home-post p {
+    padding: 0 1rem;
+  }
+  
+  .post {
+    width: 95%;
+    margin: 1rem 2.5%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    background-color: brown;
+    color: lightgrey;
+  }
+  
+  .post p {
+    font-size: 20px;
+  }
+  
+  .post:hover {
+    cursor: pointer;
+  }
+  
+  .new-post {
+    margin: 1rem 0 0 2.5%;
+    background-color: brown;
+    color: lightgrey;
+    border: none;
+    border-radius: 10px;
+    padding: .5rem;
+  }
+  
+  .new-post:hover {
+    cursor: pointer;
+  }
+  
+  #logout {
+    color: white;
+    background-color: brown;
+    outline: none;
+    border: none;
+    font-size: 24px;
+  }
+  
+  .page-header {
+    background-color: brown;
+    display: flex;
+    align-items: center;
+  }
+  
+  .page-header h2 {
+    color: brown;
+    padding: 1rem;
+    margin: 0;
+  }
+  
+  .header-card {
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 8px 8px lightgrey;
+    margin: 1rem 1rem 2rem 2rem;
+  }
+  
+  .login {
+    width: 95%;
+    margin: 1rem auto;
+    padding-bottom: .5rem;
+    border: 3px solid brown;
+  }
+  
+  .login a {
+    text-decoration: none;
+    color: black;
+    margin-left: .5rem;
+  }
+  
+  .login-header {
+    background-color: brown;
+    color: white;
+    padding: .5rem;
+    margin-bottom: 12px;
+  }
+  
+  .login-header h2 {
+    margin: 0;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    font-size: 20px;
+    margin: 0 .5rem .5rem .5rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    border: none;
+    background-color: lightgrey;
+    height: 30px;
+    padding-left: .5rem;
+  }
+  
+  .submit {
+    border: none;
+    background-color: rgb(100, 100, 100);
+    color: white;
+    border-radius: 10px;
+    padding: .5rem 0;
+  }
+  
+  .submit:hover {
+    cursor: pointer;
+  }
+  
+  .signup {
+    width: 95%;
+    margin: 1rem auto;
+    padding-bottom: .5rem;
+    border: 3px solid brown;
+  }
+  
+  .signup a {
+    text-decoration: none;
+    color: black;
+    margin-left: .5rem;
+  }
+  
+  .signup-header {
+    background-color: brown;
+    color: white;
+    padding: .5rem;
+    margin-bottom: 12px;
+  }
+  
+  .signup-header h2 {
+    margin: 0;
+  }
+  
+  #logout:hover {
+    cursor: pointer;
+  }
+  
+  .new-post-form {
+    width: 95%;
+    margin: 1rem auto;
+    padding-bottom: .5rem;
+    border: 3px solid brown;
+  }
+  
+  .new-post-header {
+    background-color: brown;
+    color: white;
+    padding: .5rem;
+    margin-bottom: 12px;
+  }
+  
+  .new-post-header h2 {
+    margin: 0;
+  }
+  
+  .update-post-form {
+    width: 95%;
+    margin: 1rem auto;
+    border: 3px solid brown;
+  }
+  
+  .update-post-header {
+    background-color: brown;
+    color: white;
+    padding: .5rem;
+    margin-bottom: 12px;
+  }
+  
+  .update-post-header h2 {
+    margin: 0;
+  }
+  
+  .add-comment-header {
+    height: 2.5rem;
+    background-color: brown;
+    margin-bottom: 1rem;
+  }
+  
+  #comment-form {
+    display: none;
+  }
+  
+  #add-comment {
+    margin: .5rem 0 0 2.5%;
+    background-color: brown;
+    color: lightgrey;
+    border: none;
+    border-radius: 10px;
+    padding: .5rem;
+  }
+  
+  #add-comment:hover {
+    cursor: pointer;
+  }
+  
+  .comment {
+    width: 95%;
+    margin: 1rem auto;
+    border-radius: 5px;
+    border: 3px solid brown;
+  }
+  
+  .comment-header {
+    height: 2.5rem;
+    background-color: brown;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    color: lightgray;
+  }
+  
+  .comment p {
+    padding: 0 1rem;
+  }
+  
+  #login-msg {
+    margin-left: 2.5%;
+  }
+  
+  .add-comment-form {
+    width: 95%;
+    margin: 1rem auto;
+    border-radius: 5px;
+    border: 3px solid brown;
+  }

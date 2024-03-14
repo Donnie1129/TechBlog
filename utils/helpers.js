@@ -1,4 +1,5 @@
 module.exports = {
-    // Define your helpers here
-  };
-  
+  format_date: (date) => {
+    return date.toLocaleDateString();
+  }
+};

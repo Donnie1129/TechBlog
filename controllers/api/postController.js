@@ -9,19 +9,14 @@ router.post('/', withAuth, async (req, res) => {
     const userData = await User.findByPk(user_id, {
       attributes: { exclude: ['password'] }
     });
-    const { username, id: user_id } = userData.get({ plain: true });
 
-    const postData = {
-      ...req.body,
-      username,
-      user_id
-    };
+    const { username, id: userId } = userData.get({ plain: true });
+    const postData = { ...req.body, username, userId };
     
     const newPost = await Post.create(postData);
-
     res.status(200).json(newPost);
-  } catch (err) {
-    res.status(400).json(err);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
 });
 
@@ -32,10 +27,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     const { id } = req.params;
 
     const deletedCount = await Post.destroy({
-      where: {
-        id,
-        user_id
-      }
+      where: { id, userId: user_id }
     });
 
     if (!deletedCount) {
@@ -44,23 +36,24 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
 
     res.status(200).json({ message: 'Post deleted successfully' });
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 });
 
 // Update a post
-router.put('/', withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
-    const { id, ...postData } = req.body;
+    const { id } = req.params;
+    const { userId, ...postData } = req.body;
 
     await Post.update(postData, {
-      where: { id }
+      where: { id, userId }
     });
 
     res.status(200).json({ message: 'Post updated successfully' });
-  } catch (err) {
-    res.status(400).json(err);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
 });
 
