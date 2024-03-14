@@ -6,13 +6,16 @@
 
 <div>
   {{#if posts.length}}
-    {{#each posts as |post| }}
-    <div class="post" id="{{post.id}}">
-      <h2 id="{{post.id}}">{{post.title}}</h2><p id="{{post.id}}">{{format_date post.date_created}}</p>
-    </div>
+    {{#each posts}}
+      <div class="post" id="{{id}}">
+        <h2>{{title}}</h2>
+        <p>{{format_date date_created}}</p>
+      </div>
     {{/each}}
+  {{else}}
+    <p>No posts available.</p>
   {{/if}}
-  <button class="new-post">+ New Post</button>
+  <button class="new-post">Create New Post</button>
 </div>
 
 <script src="./js/dashboard.js"></script>

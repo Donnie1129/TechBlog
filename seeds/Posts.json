@@ -1,8 +1,8 @@
 [
     {
-      "title": "TEST POST 1",
-      "post": "example post for testing purposes.",
-      "username": "susclues",
+      "title": "test post",
+      "post": "test post",
+      "username": "donnie",
       "user_id": 1
     }
-  ]
+]

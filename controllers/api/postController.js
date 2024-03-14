@@ -2,59 +2,85 @@ const router = require('express').Router();
 const { Post, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// Create a new post
 router.post('/', withAuth, async (req, res) => {
   try {
-    const { user_id } = req.session;
-    const userData = await User.findByPk(user_id, {
+    const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] }
     });
 
-    const { username, id: userId } = userData.get({ plain: true });
-    const postData = { ...req.body, username, userId };
+    const user = userData.get({ plain: true });
+
+    const postData = {
+      ...req.body,
+      username: user.username,
+      user_id: user.id
+    }
     
     const newPost = await Post.create(postData);
+
     res.status(200).json(newPost);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 
-// Delete a post by id
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const { user_id } = req.session;
-    const { id } = req.params;
-
-    const deletedCount = await Post.destroy({
-      where: { id, userId: user_id }
+    const postData = await Post.destroy({
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
     });
 
-    if (!deletedCount) {
+    if (!postData) {
       res.status(404).json({ message: 'No post found with this id!' });
       return;
     }
 
-    res.status(200).json({ message: 'Post deleted successfully' });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
-// Update a post
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/', async (req, res) => {
   try {
-    const { id } = req.params;
-    const { userId, ...postData } = req.body;
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] }
+    })
 
-    await Post.update(postData, {
-      where: { id, userId }
-    });
+    const user = userData.get({ plain: true })
 
-    res.status(200).json({ message: 'Post updated successfully' });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
+    Post.update(
+      {
+        ...req.body
+      },
+      {
+        where: {
+          id: req.body.id
+        }
+      }
+    )
+
+    document.location.replace('/dashboard')
+  } catch (err) {
+    res.status(400).json(err)
   }
-});
+})
+
+router.delete('/', (req, res) => {
+  try {
+    Post.destroy({
+      where: {
+        id: req.body.id
+      }
+    })
+
+    document.location.replace('/dashboard')
+  } catch (err) {
+    res.status(400).json(err)
+  }
+})
 
 module.exports = router;
